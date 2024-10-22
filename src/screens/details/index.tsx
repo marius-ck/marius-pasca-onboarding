@@ -1,50 +1,16 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
+import { View, Text, StyleSheet } from 'react-native';
+import { RootStackParamList } from '../../navigation/types';
 
-const API_KEY = 'YOUR_API_KEY'; // Replace this with your OpenWeatherMap API Key
+type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
-// const fetchCitiesWeather = async () => {
-//   // List of cities by name or city IDs
-//   const cityIds = ['5128581', '2643743', '2968815']; // New York, London, Paris
-//   const cityPromises = cityIds.map(cityId =>
-//     fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${API_KEY}`)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-//         return response.json();
-//       })
-//   );
-//   const results = await Promise.all(cityPromises);
-//   return results.map(response => response.data); // Return only the data
-// };
+const WeatherDetails: React.FC<Props> = ({ route }) => {
+  const city = route.params.city;
 
-const WeatherDetails = () => {
   return <View style={styles.backgroud}>
-    <Text>HELLO 2</Text>
+    <Text>{city.name}</Text>
   </View>
-  // const { data, error, isLoading, refetch } = useQuery({ queryKey: ['citiesWeather'], queryFn: fetchCitiesWeather });
-
-  // if (isLoading) return <ActivityIndicator size="large" color="#0000ff" />;
-  // if (error) return <Text>Error fetching data...</Text>;
-
-  // return (
-  //   <FlatList
-  //     data={data}
-  //     keyExtractor={(item) => item.id.toString()}
-  //     renderItem={({ item }) => (
-  //       <View style={styles.cityContainer}>
-  //         <Text style={styles.cityName}>{item.name}</Text>
-  //         <Text style={styles.cityWeather}>
-  //           {item.weather[0].description}, Temp: {Math.round(item.main.temp - 273.15)}°C
-  //         </Text>
-  //       </View>
-  //     )}
-  //     onRefresh={refetch}
-  //     refreshing={isLoading}
-  //   />
-  // );
 };
 
 const styles = StyleSheet.create({

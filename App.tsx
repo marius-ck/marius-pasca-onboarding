@@ -1,27 +1,20 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Navigation from './src/navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const queryClient = new QueryClient()
 
 function App(): React.JSX.Element {
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
         <Navigation />
       </QueryClientProvider>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  }
-});
 
 export default App;
