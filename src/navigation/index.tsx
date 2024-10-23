@@ -18,11 +18,10 @@ function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName='Weather' screenOptions={{
       headerStyle: {
-        backgroundColor: '#cecece',
+        backgroundColor: '#f9794e',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        color: 'black',
         fontWeight: 'bold',
         fontSize: 18,
       },
