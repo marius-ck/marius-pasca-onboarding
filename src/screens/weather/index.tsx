@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, FlatList, ActivityIndicator, StyleSheet, ListRenderItem } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/types';
-import { useGroupWeather } from '../../api/weather';
-import { WeatherData } from '../../api/weather/types';
+import { RootStackParamList } from '@navigation/types';
+import { useGroupWeather } from '@api/weather';
+import { WeatherData } from '@api/weather/types';
 import WeatherListItem from './WeatherListItem';
+import { DEFAULT_CITY_IDS } from './utils';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Weather'>;
 
 const WeatherList: React.FC<Props> = ({ navigation }) => {
-  const { data, isLoading, error, refetch } = useGroupWeather();
+  const { data, isLoading, error, refetch } = useGroupWeather(DEFAULT_CITY_IDS);
 
   if (isLoading) return <View style={styles.placeholder}>
     <ActivityIndicator size="large" color="#f9794e" />

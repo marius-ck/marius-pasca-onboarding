@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import chevron_right from '../../assets/images/chevron_right.png';
-import { WeatherData } from '../../api/weather/types';
-import CityWeather from '../../components/CityWeather';
+import chevron_right from '@assets/images/chevron_right.png';
+import { WeatherData } from '@api/weather/types';
+import CityWeather from '@components/CityWeather';
 
 type Props = {
     navigateToDetails: () => void;

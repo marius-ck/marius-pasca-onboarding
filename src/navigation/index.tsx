@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WeatherList from '../screens/weather';
-import WeatherDetails from '../screens/details';
+import WeatherList from '@screens/weather';
+import WeatherDetails from '@screens/details';
 import { RootStackParamList } from './types';
 
 export default function Navigation() {
