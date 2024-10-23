@@ -16,7 +16,7 @@ const WeatherDetails: React.FC<Props> = ({ route }) => {
     value: `${data.main.pressure} hPa`
   }, {
     text: 'Wind Speed',
-    value: `${data.wind.speed} mph`
+    value: `${data.wind.speed.toFixed(2)} mph`
   }, {
     text: 'Cloud Cover',
     value: `${data.clouds.all}%`

@@ -1,4 +1,4 @@
-import { useInfiniteQuery, QueryFunction } from "@tanstack/react-query";
+import { QueryFunction, useQuery } from "@tanstack/react-query";
 import { API_KEY } from "@env"
 import { WeatherData } from "./types";
 
@@ -16,40 +16,18 @@ const cityIds = [
     5128581, // New York City, US
 ];
 
-const fetchCitiesWeather: QueryFunction<WeatherData[], string[], number> = async ({ pageParam }) => {
-    const startIndex = pageParam * 5;
-    const endIndex = startIndex + 5;
-    const cityBatch = cityIds.slice(startIndex, endIndex);
+const fetchGroupCities: QueryFunction<WeatherData[]> = async () => {
+    const cityIdsString = cityIds.join(',');
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/group?id=${cityIdsString}&appid=${API_KEY}&units=imperial`);
 
-    const cityPromises = cityBatch.map(cityId =>
-        fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${API_KEY}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-    );
-
-    return Promise.all(cityPromises);
-};
-
-export function useGetWeather() {
-    const query = useInfiniteQuery({
-        queryKey: ['citiesWeather'],
-        queryFn: fetchCitiesWeather,
-        initialPageParam: 0,
-        getNextPageParam: (_, allPages) => {
-            const totalFetchedCities = allPages.flat().length;
-            return totalFetchedCities < cityIds.length ? allPages.length : undefined;
-        },
-    });
-
-    const fetchNextPage = () => {
-        if (query.hasNextPage) {
-            query.fetchNextPage()
-        }
+    if (!response.ok) {
+        throw new Error('Failed to fetch weather data');
     }
 
-    return { ...query, fetchNextPage };
+    const data = await response.json();
+    return data.list;
+};
+
+export function useGroupWeather() {
+    return useQuery({ queryKey: ['groupWeather'], queryFn: fetchGroupCities });
 }

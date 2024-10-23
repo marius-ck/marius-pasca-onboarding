@@ -2,14 +2,14 @@ import React from 'react';
 import { View, Text, FlatList, ActivityIndicator, StyleSheet, ListRenderItem } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/types';
-import { useGetWeather } from '../../api/weather';
+import { useGroupWeather } from '../../api/weather';
 import { WeatherData } from '../../api/weather/types';
 import WeatherListItem from './WeatherListItem';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Weather'>;
 
 const WeatherList: React.FC<Props> = ({ navigation }) => {
-  const { data, fetchNextPage, isLoading, error, refetch } = useGetWeather();
+  const { data, isLoading, error, refetch } = useGroupWeather();
 
   if (isLoading) return <View style={styles.placeholder}>
     <ActivityIndicator size="large" color="#f9794e" />
@@ -34,12 +34,11 @@ const WeatherList: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={data?.pages.flat()}
+        data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
         onRefresh={refetch}
         ListEmptyComponent={emptyComponent}
-        onEndReached={fetchNextPage}
         refreshing={isLoading}
       />
     </View>

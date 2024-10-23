@@ -46,7 +46,7 @@ const CityWeather: React.FC<Props> = ({ data }) => {
                 </View>
             </View>
             <View style={styles.tempContainer}>
-                <Text style={styles.tempText}>{Math.round(data.main.temp)}°F</Text>
+                <Text style={styles.tempText}>{data.main.temp.toFixed(1)}°F</Text>
             </View>
         </View>
     )
