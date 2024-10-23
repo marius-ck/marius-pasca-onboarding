@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import clear_sky from '../assets/images/clear_sky.png';
-import few_clouds from '../assets/images/few_clouds.png';
-import scattered_clouds from '../assets/images/scattered_clouds.png';
-import broken_clouds from '../assets/images/broken_clouds.png';
-import shower_rain from '../assets/images/shower_rain.png';
-import rain from '../assets/images/rain.png';
-import thunderstorm from '../assets/images/thunderstorm.png';
-import snow from '../assets/images/snow.png';
-import mist from '../assets/images/mist.png';
-import { WeatherData } from '../api/weather/types';
+import clear_sky from '@assets/images/clear_sky.png';
+import few_clouds from '@assets/images/few_clouds.png';
+import scattered_clouds from '@assets/images/scattered_clouds.png';
+import broken_clouds from '@assets/images/broken_clouds.png';
+import shower_rain from '@assets/images/shower_rain.png';
+import rain from '@assets/images/rain.png';
+import thunderstorm from '@assets/images/thunderstorm.png';
+import snow from '@assets/images/snow.png';
+import mist from '@assets/images/mist.png';
+import { WeatherData } from '@api/weather/types';
 
 type Props = {
     data: WeatherData;

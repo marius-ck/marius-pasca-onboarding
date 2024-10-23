@@ -1,8 +1,8 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { RootStackParamList } from '../../navigation/types';
-import CityWeather from '../../components/CityWeather';
+import { RootStackParamList } from '@navigation/types';
+import CityWeather from '@components/CityWeather';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
@@ -16,7 +16,7 @@ const WeatherDetails: React.FC<Props> = ({ route }) => {
     value: `${data.main.pressure} hPa`
   }, {
     text: 'Wind Speed',
-    value: `${data.wind.speed.toFixed(2)} mph`
+    value: `${data.wind.speed.toFixed(1)} mph`
   }, {
     text: 'Cloud Cover',
     value: `${data.clouds.all}%`

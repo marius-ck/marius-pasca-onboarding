@@ -11,6 +11,22 @@ module.exports = {
         safe: false,
         allowUndefined: true
       }
-    ]
+    ],
+    ['module-resolver', {
+      alias: {
+        '@assets': './src/assets',
+        '@styles': './src/styles',
+        '@api': './src/api',
+        '@components': './src/components',
+        '@navigation': './src/navigation',
+        '@screens': './src/screens',
+      },
+      extensions: [
+        '.js',
+        '.jsx',
+        '.ts',
+        '.tsx',
+      ]
+    }]
   ]
 };
