@@ -10,6 +10,7 @@ import thunderstorm from '@assets/images/thunderstorm.png';
 import snow from '@assets/images/snow.png';
 import mist from '@assets/images/mist.png';
 import { WeatherData } from '@api/weather/types';
+import { capitalizeLetter } from './utils';
 
 type Props = {
     data: WeatherData;
@@ -31,13 +32,11 @@ const getIcon = (icon: string) => {
     return iconMap[icon.replace('n', 'd')] || clear_sky
 }
 
-const capitalizeLetter = (text: string) => text.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-
 const CityWeather: React.FC<Props> = ({ data }) => {
     const weather = data.weather[0];
 
     return (
-        <View style={styles.cityContainer}>
+        <View style={styles.cityContainer} testID="city_weather_component">
             <View style={styles.cityDetails}>
                 <Image source={getIcon(weather.icon)} style={styles.weatherIcon} />
                 <View>

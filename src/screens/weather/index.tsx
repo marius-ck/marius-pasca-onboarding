@@ -5,7 +5,7 @@ import { RootStackParamList } from '@navigation/types';
 import { useGroupWeather } from '@api/weather';
 import { WeatherData } from '@api/weather/types';
 import WeatherListItem from './WeatherListItem';
-import { DEFAULT_CITY_IDS } from './utils';
+import { DEFAULT_CITY_IDS } from '@api/weather/mock';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Weather'>;
 
