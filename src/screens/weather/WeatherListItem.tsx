@@ -11,12 +11,12 @@ type Props = {
 
 const WeatherListItem: React.FC<Props> = ({ navigateToDetails, data }) => {
     return (
-        <TouchableOpacity onPress={navigateToDetails} style={styles.container}>
+        <TouchableOpacity onPress={navigateToDetails} style={styles.container} testID='navigat_to_details'>
             <View style={styles.cityContainer}>
                 <CityWeather data={data} />
             </View>
             <View style={styles.iconContainer}>
-                <Image source={chevron_right} style={styles.rightIcon} />
+                <Image source={chevron_right} style={styles.rightIcon} testID='chevron_right' />
             </View>
         </TouchableOpacity>
     )
