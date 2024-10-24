@@ -10,7 +10,7 @@ import thunderstorm from '@assets/images/thunderstorm.png';
 import snow from '@assets/images/snow.png';
 import mist from '@assets/images/mist.png';
 import { WeatherData } from '@api/weather/types';
-import { capitalizeLetter } from './utils';
+import { capitalizeLetter } from 'react-native-weather';
 
 type Props = {
     data: WeatherData;
