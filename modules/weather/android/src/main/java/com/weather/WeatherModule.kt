@@ -11,10 +11,12 @@ class WeatherModule(reactContext: ReactApplicationContext) :
     return NAME
   }
 
+  fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
+
   // Example method
   // See https://reactnative.dev/docs/native-modules-android
   override fun capitalizeLetter(text: String): String {
-    return text
+    return text.capitalizeWords()
   }
 
   companion object {
